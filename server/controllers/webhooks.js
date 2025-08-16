@@ -19,7 +19,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
             case 'user.created':{
                 const userData = {
                     _id: data.id,
-                    email: data.email_addresses[0].email_addresses,
+                    email: data.email_addresses[0].email_address,
                     name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url,
                 };
@@ -29,7 +29,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
             }
             case 'user.updated':{
                 const userData = {
-                    email: data.email_addresses[0].email_addresses,
+                    email: data.email_addresses[0].email_address,
                     name: data.first_name + " " + data.last_name,
                     imageUrl: data.image_url
                 };
@@ -37,7 +37,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
                 res.json({});
                 break;
             }
-            case 'user.delete': {
+            case 'user.deleted': {
                 await User.findByIdAndDelete(data.id);
                 res.json({});
                 break;
