@@ -19,7 +19,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
             case 'user.created':{
                 const userData = {
                     _id: data.id,
-                    email: data.email_addresses[0].email_address,
+                    email: data.email_addresses[0].email_addresses,
                     name: data.first_name + " " + data.last_name,
                     imageUrl: data.imageUrl,
                 };
@@ -29,7 +29,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
             }
             case 'user.updated':{
                 const userData = {
-                    email: data.email_addresses[0].email_address,
+                    email: data.email_addresses[0].email_addresses,
                     name: data.first_name + " " + data.last_name,
                     imageUrl: data.imageUrl
                 };
