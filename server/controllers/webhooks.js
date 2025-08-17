@@ -14,6 +14,7 @@ export const clerkWebhooks = async(requestAnimationFrame, res)=>{
         });
 
         const {data, type} = req.body;
+        console.log(data);
 
         switch (type) {
             case 'user.created':{
