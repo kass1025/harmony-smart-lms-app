@@ -18,7 +18,6 @@ const chapterSchema = new mongoose.Schema({
 
 const courseSchema = new mongoose.Schema(
     {
-        _id: {type: String, required: true},
         courseTitle: {type: String, required: true},
         courseDescription:{type: String, required: true},
         courseThumbnail:{type: File, required:false},
