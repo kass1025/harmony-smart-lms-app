@@ -7,14 +7,14 @@ const lectureSchema = new mongoose.Schema({
     lectureUrl:{type:String, required:true},
     isPreviewFree:{type: Boolean, default: true},
     lectureOrder:{type:Number, required:true}
-},{_id:false});
+},{_id:false})
 
 const chapterSchema = new mongoose.Schema({
     chapterId:{type:String, required:true},
     chapterOrder: {type:Number, required:true},
     chapterTitle: {type:String, required:true},
     chapterContent: [lectureSchema]
-},{_id:false});
+},{_id:false})
 
 const courseSchema = new mongoose.Schema(
     {
@@ -40,10 +40,9 @@ const courseSchema = new mongoose.Schema(
     },
     {
         timestamps:true, minimize:false,
-    },
-);
+    })
 
-const Course = mongoose.model("Course", courseSchema);
-export default Course;
+    const Course = mongoose.model("Course", courseSchema);
+    export default Course;
 
 //or we can export default User;
