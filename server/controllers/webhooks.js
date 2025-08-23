@@ -84,6 +84,8 @@ export const stripeWebhooks = async(request, response)=>{
             const userData = await User.findById(purchaseData.userId);
             //Get course data from purchased item data
             const courseData = await Course.findById(purchaseData.courseId.toString());
+
+            courseData.enrolledStudents.push(userData);
             courseData.save();
 
             userData.enrolledCourses.push(courseData._id);
@@ -109,6 +111,8 @@ export const stripeWebhooks = async(request, response)=>{
         }
         // ... handle other event types
         default:
-            console.log("Unhandled event type: #{event.type}")
+            console.log(`Unhandled event type: ${event.type}`);
     }
+    // Return a response to acknowledge receipt of the event
+    response.json({received:true});
 }
