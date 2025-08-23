@@ -86,13 +86,13 @@ export const stripeWebhooks = async(request, response)=>{
             const courseData = await Course.findById(purchaseData.courseId.toString());
 
             courseData.enrolledStudents.push(userData);
-            courseData.save();
+            await courseData.save();
 
             userData.enrolledCourses.push(courseData._id);
-            userData.save();
+            await userData.save();
             //Change the status of purchased data from pending to completed
             purchaseData.status='completed';
-            purchaseData.save();
+            await purchaseData.save();
             break;
         }
         case 'payment_method.attached':{
@@ -106,7 +106,7 @@ export const stripeWebhooks = async(request, response)=>{
             //Get purchased item by id
             const purchaseData = await Purchase.findById(purchaseId);
             purchaseData.status='failed';
-            purchaseData.save();
+            await purchaseData.save();
             break;
         }
         // ... handle other event types
