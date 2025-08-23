@@ -1,4 +1,4 @@
-import Stripe from "stripe";
+import stripe from "stripe";
 import { Webhook } from "svix";
 import Course from "../models/Course.js";
 import { Purchase } from "../models/Purchase.js";
@@ -55,13 +55,13 @@ export const clerkWebhooks = async(req, res)=>{
 };
 
 //Stripe Gateway Initialize
-const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY)
+const stripeInstance = new stripe(process.env.STRIPE_SECRET_KEY)
 
 export const stripeWebhooks = async(request, response)=>{
-    const sig = request.headers["Stripe-Signature"];
-    let event;
+    const sig = request.headers['stripe-signature']
+    let event
     try {
-        event = Stripe.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET);      
+        event = stripe.webhooks.constructEvent(request.body, sig, process.env.STRIPE_WEBHOOK_SECRET);      
     } catch (error) {
         response.status(400).send(`Webhook Error:${error.message}`);        
     }
