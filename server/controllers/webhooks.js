@@ -93,9 +93,10 @@ export const stripeWebhooks = async(request, response)=>{
             //Change the status of purchased data from pending to completed
             purchaseData.status='completed';
             await purchaseData.save();
+            console.log(purchaseData.status)
             break;
         }
-        case 'payment_method.attached':{
+        case 'payment_intent.payment_failed':{
             const paymentIntent = event.data.object;
             const paymentIntentId = paymentIntent.id;
             const session = await stripeInstance.checkout.sessions.list({
