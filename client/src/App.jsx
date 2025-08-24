@@ -1,5 +1,6 @@
 import 'quill/dist/quill.snow.css'
 import { Route, Routes, useMatch } from "react-router-dom"
+import { ToastContainer } from 'react-toastify'
 import Loading from "./components/student/Loading"
 import NavBar from "./components/student/Navbar"
 import AddCourse from "./pages/educator/AddCourse"
@@ -16,7 +17,7 @@ const App = () => {
   const isEducatorRoute = useMatch('/educator/*')
   return (
     <div className="text-default min-h-screen bg-white">
-      <div ToastContainer/>
+      <ToastContainer/>
       {!isEducatorRoute &&  <NavBar/>}
       <Routes>
         <Route path="/" element={<Home />}/>
