@@ -12,11 +12,11 @@ import CoursesList from "./pages/student/CoursesList"
 import Home from "./pages/student/Home"
 import MyEnrollments from "./pages/student/MyEnrollments"
 import Player from "./pages/student/Player"
-
 const App = () => {
   const isEducatorRoute = useMatch('/educator/*')
   return (
     <div className="text-default min-h-screen bg-white">
+      <div ToastContainer/>
       {!isEducatorRoute &&  <NavBar/>}
       <Routes>
         <Route path="/" element={<Home />}/>
