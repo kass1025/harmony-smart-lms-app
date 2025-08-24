@@ -9,7 +9,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider =(props)=>{
 
-    const backEndUrl = import.meta.env.VITE_BACEND_URL;
+    const backEndUrl = import.meta.env.VITE_BACKEND_URL;
     const currency = import.meta.env.VITE_CURRENCY;
     const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ export const AppContextProvider =(props)=>{
             const {data} = await axios.get(backEndUrl,+ '/api/user/data',{headers: {Authorization: `Bearer ${token}`}})
 
             if(data.success){
-                setUserData(data.users)
+                setUserData(data.user)
             }else{
                 toast.error(data.message)
             }
