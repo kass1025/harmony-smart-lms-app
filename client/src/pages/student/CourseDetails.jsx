@@ -20,8 +20,6 @@ const CourseDetails = () => {
   const {allCourses,calculateRating,currency,calculateChapterTime, 
     calculateCourseDuration ,calculateNoOfLectures, backEndUrl, userData, getToken} = useContext(AppContext);
 
-  console.log(userData);
-  console.log(backEndUrl);
   const fetchCourseData = async()=>{
     try {
       const {data} = await axios.get(backEndUrl + '/api/course/' +id)

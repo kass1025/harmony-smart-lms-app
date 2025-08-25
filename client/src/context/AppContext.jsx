@@ -44,7 +44,7 @@ export const AppContextProvider =(props)=>{
         }
         try {
             const token = await getToken()
-            const {data} = await axios.get(backEndUrl,+ '/api/user/data',{headers: {Authorization: `Bearer ${token}`}})
+            const {data} = await axios.get(backEndUrl + '/api/user/data',{headers: {Authorization: `Bearer ${token}`}})
 
             if(data.success){
                 setUserData(data.user)
